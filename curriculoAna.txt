@@ -1,0 +1,301 @@
+========================================
+APP.TS
+========================================
+
+import { Component, signal } from '@angular/core';
+
+@Component({
+  imports: [],
+  selector: 'app-root',
+  styleUrl: './app.scss',
+  templateUrl: './app.html',
+})
+export class App {
+  protected readonly title = signal('meu currículo');
+
+  protected readonly temaEscuro = signal(false);
+
+  protected alternarTema(): void {
+    this.temaEscuro.update((atual) => !atual);
+  }
+}
+
+
+========================================
+INDEX.HTML
+========================================
+
+<!doctype html>
+<html lang="en" data-beasties-container>
+<head>
+  <meta charset="utf-8">
+  <title>CurriculoAna</title>
+  <base href="/">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" type="image/x-icon" href="favicon.ico">
+<link rel="stylesheet" href="styles-5INURTSO.css"></head>
+<body>
+  <app-root></app-root>
+<script src="main-J5L5NY3Y.js" type="module"></script></body>
+</html>
+
+
+========================================
+APP.HTML
+========================================
+
+<main class="curriculo" [class.tema-escuro]="temaEscuro()">
+
+  <header class="apresentacao">
+    <p class="subtitulo">OLÁ, EU SOU</p>
+
+    <h1>Ana Clara Felix Rodrigues</h1>
+
+    <h2>Estudante de Análise e Desenvolvimento de Sistemas</h2>
+
+    <p class="descricao">
+      Sou estudante de Análise e Desenvolvimento de Sistemas
+      e estou construindo minha trajetória na área de tecnologia.
+      Busco minha primeira oportunidade profissional na área para
+      colocar meus conhecimentos em prática, aprender com novos
+      desafios e crescer profissionalmente. Minha experiência
+      na área administrativa também faz parte da minha trajetória
+      e contribui para meu desenvolvimento.
+    </p>
+
+    <button
+      type="button"
+      class="botao-tema"
+      (click)="alternarTema()"
+    >
+      {{ temaEscuro() ? 'Ativar tema claro' : 'Ativar tema escuro' }}
+    </button>
+  </header>
+
+  <section class="secao" id="trajetoria">
+    <p class="numero">01 — SOBRE MIM</p>
+    <h2>Minha trajetória</h2>
+
+    <div class="bloco">
+      <h3>Formação acadêmica</h3>
+      <p>
+        Atualmente, curso Análise e Desenvolvimento de Sistemas (ADS),
+        ampliando meus conhecimentos e construindo minha trajetória
+        na área de tecnologia.
+      </p>
+    </div>
+
+    <div class="bloco">
+      <h3>Experiência profissional</h3>
+      <p>
+        Tenho experiência na área administrativa, que faz parte
+        da minha trajetória profissional. Agora, busco direcionar
+        meus próximos passos para a área de tecnologia e conquistar
+        minha primeira oportunidade nesse setor.
+      </p>
+    </div>
+
+    <div class="bloco">
+      <h3>Próximos objetivos</h3>
+      <p>
+        Colocar meus conhecimentos em prática, adquirir experiência
+        na área de tecnologia e continuar me desenvolvendo
+        profissionalmente.
+      </p>
+    </div>
+  </section>
+
+  <section class="secao" id="skills">
+    <p class="numero">02 — CONHECIMENTOS</p>
+    <h2>Minhas habilidades</h2>
+
+    <div class="bloco">
+      <h3>Conhecimentos técnicos</h3>
+      <p>Conhecimentos em desenvolvimento de software em formação.</p>
+    </div>
+
+    <div class="bloco">
+      <h3>Ferramentas</h3>
+      <p>Visual Studio Code e Angular em aprendizado.</p>
+    </div>
+
+    <div class="bloco">
+      <h3>Habilidades pessoais</h3>
+      <p>Vontade de aprender e evoluir.</p>
+      <p>Dedicação aos estudos e aos meus objetivos.</p>
+      <p>Interesse em descobrir coisas novas.</p>
+    </div>
+  </section>
+
+  <section class="secao" id="contato">
+    <p class="numero">03 — CONTATO</p>
+    <h2>Vamos conversar?</h2>
+    <p>
+      Estou em busca de uma oportunidade para iniciar minha
+      trajetória profissional na área de tecnologia.
+    </p>
+    <p>
+      Entre em contato para conversarmos sobre oportunidades
+      profissionais.
+      email: aclarafelix@gmail.com
+    </p>
+  </section>
+
+  <footer class="rodape">
+    <p>Feito com dedicação, como parte da minha jornada.</p>
+  </footer>
+
+</main>
+
+
+========================================
+APP.SCSS
+========================================
+
+.curriculo {
+  min-height: 100vh;
+  background: #ffffff;
+  color: #252525;
+  font-family: Arial, Helvetica, sans-serif;
+  padding: 70px 10%;
+  box-sizing: border-box;
+  transition: background 0.3s ease, color 0.3s ease;
+}
+
+.curriculo.tema-escuro {
+  background: #171717;
+  color: #f2f2f2;
+}
+
+.apresentacao {
+  max-width: 780px;
+  margin: 40px auto 100px;
+}
+
+.subtitulo,
+.numero {
+  font-size: 12px;
+  font-weight: bold;
+  letter-spacing: 3px;
+  color: #777777;
+}
+
+.tema-escuro .subtitulo,
+.tema-escuro .numero {
+  color: #aaaaaa;
+}
+
+.apresentacao h1 {
+  font-size: clamp(42px, 7vw, 76px);
+  line-height: 1.1;
+  margin: 20px 0;
+  letter-spacing: -3px;
+}
+
+.apresentacao h2 {
+  font-size: 22px;
+  font-weight: normal;
+  color: #666666;
+}
+
+.tema-escuro .apresentacao h2 {
+  color: #cccccc;
+}
+
+.descricao {
+  max-width: 620px;
+  font-size: 17px;
+  line-height: 1.9;
+  color: #555555;
+  margin-top: 28px;
+}
+
+.tema-escuro .descricao {
+  color: #cccccc;
+}
+
+.botao-tema {
+  margin-top: 25px;
+  padding: 12px 20px;
+  background: #252525;
+  color: #ffffff;
+  border: 1px solid #252525;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background 0.3s ease, color 0.3s ease;
+}
+
+.tema-escuro .botao-tema {
+  background: #f2f2f2;
+  color: #252525;
+  border-color: #f2f2f2;
+}
+
+.secao {
+  max-width: 780px;
+  margin: 0 auto 90px;
+}
+
+.secao h2 {
+  font-size: 32px;
+  letter-spacing: -1px;
+  margin: 18px 0 30px;
+}
+
+.bloco {
+  padding: 24px 0;
+  border-bottom: 1px solid #e8e8e8;
+}
+
+.tema-escuro .bloco {
+  border-bottom-color: #383838;
+}
+
+.bloco h3 {
+  font-size: 18px;
+  margin: 0 0 10px;
+}
+
+.bloco p,
+.secao > p:not(.numero) {
+  color: #666666;
+  font-size: 15px;
+  line-height: 1.8;
+}
+
+.tema-escuro .bloco p,
+.tema-escuro .secao > p:not(.numero) {
+  color: #c5c5c5;
+}
+
+.rodape {
+  max-width: 780px;
+  margin: 0 auto;
+  padding-top: 25px;
+  border-top: 1px solid #e8e8e8;
+  color: #888888;
+  font-size: 13px;
+}
+
+.tema-escuro .rodape {
+  border-top-color: #383838;
+  color: #aaaaaa;
+}
+
+@media (max-width: 600px) {
+  .curriculo {
+    padding: 40px 7%;
+  }
+
+  .apresentacao {
+    margin-top: 30px;
+  }
+
+  .apresentacao h1 {
+    letter-spacing: -2px;
+  }
+
+  .secao h2 {
+    font-size: 28px;
+  }
+}
